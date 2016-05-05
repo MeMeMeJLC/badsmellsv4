@@ -188,6 +188,8 @@ class Model():
         else:
             return int(income)
 
+    def SayHi():
+        return "hi"
 
 class View():
     pass
@@ -338,7 +340,6 @@ class Controller(cmd.Cmd):
         :param: self
         :return: A pie chart of genders of employees
         """
-
         if not Model.gender_list:
             print("No data loaded, please enter data location")
             Model.get_data()
@@ -374,6 +375,7 @@ class Controller(cmd.Cmd):
         :return: Will exit the app.
         """
         doctest.testfile("doctests.txt")
+
         print('Quitting...')
         raise SystemExit
 

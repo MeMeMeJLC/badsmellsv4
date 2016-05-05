@@ -1,3 +1,13 @@
+"""
+need to make code more testable!!!
+"""
+
+
+>>> from Assignment1SalesApp import Model
+
+>>> True
+True
+
 >>> Model.id_list[3] is None
 True
 
@@ -22,7 +32,7 @@ True
 #Raw input is "F456", should return "F456" because
 the input is in correct format.
 >>> Model.id_list[6]
-'F456'
+"F456"
 
 >>> Model.gender_list[1] is None
 True
@@ -105,3 +115,9 @@ True
 
 >>> Model.fake
 '44'
+
+>>> Model.SayHi()
+'hi'
+
+>>> Model.SayHi()
+'' 
