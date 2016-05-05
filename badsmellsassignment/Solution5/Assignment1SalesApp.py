@@ -24,16 +24,7 @@ class Model():
     income_list = list()
 
     def get_data():
-        """
-        Check correct data has entered list at correct index.
-        loadData_Bad.txt scenario.
 
-        >>> Model.id_list[3] is None
-        True
-
-        >>> Model.gender_list[3]
-        'F'
-        """
         filename = input("Enter the destination/filename. \
         Eg: D:/data/load_data.txt")
         try:
@@ -137,31 +128,7 @@ class Model():
             """
 
     def validate_id(id):
-        """
-        test using loadData_Bad.txt.
-        #Raw input is "a0111", should return None
-        because the input is too long to be valid.
 
-        >>> Model.id_list[1] is None
-        True
-
-        #Raw input is "c234", should return None because
-        the input has a lower case first char.
-
-        >>> Model.id_list[3] is None
-        True
-
-        #Raw input is "E30", should return None because
-        the input is not long enough.
-
-        >>> Model.id_list[5] is None
-        True
-
-        #Raw input is "F456", should return "F456" because
-        the input is in correct format.
-        >>> Model.id_list[6]
-        'F456'
-        """
         match_id = re.match('[A-Z][0-9]{3}', id)
         if match_id is None or len(id) is not 4:
             print('id format incorrect: id entered as None')
@@ -172,19 +139,7 @@ class Model():
             return id
 
     def validate_gender(gender):
-        """
-        #Raw input is "?", should return None because not a valid input.
-        >>> Model.gender_list[1] is None
-        True
 
-        #Raw input is " ", should return 0 because not a valid input.
-        >>> Model.gender_list[6] is None
-        True
-
-        #Raw input is "F", should return "F" because it is valid input.
-        >>> Model.gender_list[3]
-        'F'
-        """
         match_gender = re.match('(M|F)', gender)
         if match_gender is None:
             print('gender format incorrect:  entered as None')
@@ -194,24 +149,7 @@ class Model():
             return gender
 
     def validate_age(age):
-        """
-        #Raw input is "2", should return 0 as input is in
-        invalid format.
 
-        >>> Model.age_list[0] is 0
-        True
-
-        #Raw input is "1S", should return 0 as input has a
-        non-int character in it.
-
-        >>> Model.age_list[7] is 0
-        True
-
-        #Raw input is "60", should return "60" as it is valid.
-
-        >>> Model.age_list[9]
-        '60'
-        """
         match_age = re.match('[0-9]{2}', age)
         if match_age is None or len(age) is not 2:
             print('age format incorrect:  entered as 0')
@@ -221,24 +159,7 @@ class Model():
             return int(age)
 
     def validate_sales(sales):
-        """
-        #Raw input is "54", should return 0, because input in
-        incorrect format.
 
-        >>> Model.sales_list[6] is 0
-        True
-
-        #Raw input is "5554", should return 0, because input is in
-        incorrect format, too long
-
-        >>> Model.sales_list[7] is 0
-        True
-
-        #Raw input is "222", should return "222" as it's correct format
-
-        >>> Model.sales_list[0]
-        '222'
-        """
         match_sales = re.match('[0-9]{3}', sales)
         if match_sales is None or len(sales) is not 3:
             print('sales format incorrect:  entered as 0')
@@ -248,23 +169,7 @@ class Model():
             return int(sales)
 
     def validate_bmi(bmi):
-        """
-        #Raw input is "underweight", should return None as first char
-        is lowercase
 
-        >>> Model.bmi_list[1] is None
-        True
-
-        #Raw input is " ", should return None as field is empty
-
-        >>> Model.bmi_list[4] is None
-        True
-
-        #Raw input is "Normal", should return "Normal" as is correct format
-
-        >>> Model.bmi_list[0]
-        'Overweight'
-        """
         match_bmi = re.match('(Normal|Overweight|Obesity|Underweight)', bmi)
         if match_bmi is None:
             print('bmi format incorrect:  entered as None')
@@ -274,26 +179,7 @@ class Model():
             return bmi
 
     def validate_income(income):
-        """
-        #Raw input is "8", should return 0, incorrect format, only 1 number
 
-        >>> Model.income_list[2] is 0
-        True
-
-        #Raw input is " ", should return 0 as it is an empty field
-
-        >>> Model.income_list[3] is 0
-        True
-
-        #Raw input is "999", should return "999" as is in correct format
-        >>> Model.income_list[0]
-        '999'
-
-        #Raw input is "87", should return "87" because it is correct format
-        >>> Model.income_list[1]
-        '87'
-
-        """
         match_income = re.match('[0-9]{2,3}', income)
         if match_income is None or len(income) > 3:
             print('income format incorrect:  entered as 0')
@@ -487,7 +373,7 @@ class Controller(cmd.Cmd):
         :param: self
         :return: Will exit the app.
         """
-
+        doctest.testfile("doctests.txt")
         print('Quitting...')
         raise SystemExit
 
@@ -499,7 +385,8 @@ class Controller(cmd.Cmd):
 
 if __name__ == '__main__':
 
-
     controller = Controller()
     controller.prompt = ':) '
     controller.cmdloop('Starting prompt...')
+
+

@@ -4,6 +4,7 @@ import unittest
 class MyTest(unittest.TestCase):
     """Testing loadData_Bad.txt and whether it is loading into the
     Model class correctly via get_data"""
+    @mock.patch('builtins.input', side_effect=['11', '13', 'Bob'])
     def test1(self):
         #rawdata = 'a0111', should be None ~~ too long
         self.assertEqual(id_list[1], None)
