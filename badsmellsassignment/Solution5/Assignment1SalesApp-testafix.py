@@ -23,10 +23,10 @@ class Model():
     bmi_list = list()
     income_list = list()
 
-    def get_data(filename):
+    def get_data():
 
-        """filename = input("Enter the destination/filename. \
-        Eg: D:/data/load_data.txt")"""
+        filename = input("Enter the destination/filename. \
+        Eg: D:/data/load_data.txt")
         try:
             with open(filename, 'r') as f:
                 for line in f:
@@ -58,8 +58,6 @@ class Model():
         except IOError:
             print("IO error, not reading file. Try entering filename again")
 
-        return "get_data(" + filename + ") run"
-
     def serialise_data():
 
         print("called serialise_data()")
@@ -72,7 +70,6 @@ class Model():
                 str(Model.sales_list[i]) + " " + Model.bmi_list[i] + " " \
                 + str(Model.income_list[i]) + os.linesep
         print(toSerialiseList)
-
         if Model.id_list or Model.gender_list or Model.age_list or \
             Model.sales_list or Model.bmi_list or Model.income_list:
                 serialise_location = input('Enter location/filename to save \
@@ -91,7 +88,7 @@ class Model():
         """
 
     def load_serialised_data():
-        print("called load_serialised_data()")
+        print("called load serialised_data()")
         """
         load_serial_data = input('Would you like to reload saved data? Y or N')
         if load_serial_data == 'y' or 'Y':
@@ -135,7 +132,8 @@ class Model():
         if match_id is None or len(id) is not 4:
             print('id format incorrect: id entered as None')
             id = None
-            return id
+            print(id)
+            return(id)
         else:
             return id
 
@@ -189,6 +187,9 @@ class Model():
         else:
             return int(income)
 
+    def SayHi():
+        return "hi"
+
 class View():
     pass
 
@@ -234,7 +235,7 @@ class View():
                 autopct='%1.1f%%', shadow=True, startangle=90)
         plt.axis('equal')
         plt.show()
-        print("pie_chart_gender run")
+        print("p")
 
     def pie_chart_bmi():
         obesity_count = 0
@@ -282,6 +283,7 @@ class View():
         except ZeroDivisionError:
             und_percent = 0
 
+        print(all_valid_count)
         labels = 'Obesity', 'Overweight', 'Normal', 'Underweight'
         sizes = ob_percent, ov_percent, norm_percent, und_percent
         colors = 'red', 'orange', 'green', 'orange'
@@ -291,12 +293,10 @@ class View():
                 shadow=True, startangle=90)
         plt.axis('equal')
         plt.show()
-        print("pie_chart_bmi run")
-
 
 class Controller(cmd.Cmd):
 
-    def do_load_file(self):
+    def do_load_file(self, args):
         """
         :method: load_file or lf
         :description: Gets employee data from a text file. This method will
@@ -305,12 +305,10 @@ class Controller(cmd.Cmd):
         F 32 300 Normal 500 - with each employee on a new line. Any invalid
         data will be inputted as 0 or None. Once this is run the data will be
         loaded and ready to analyse or save in pickle.
-        :param: none
+        :param: self, args
         :return: Data into correct format to be saved or analysed in the app.
         """
-        filename = input("Enter the destination/filename. \
-        Eg: D:/data/load_data.txt")
-        Model.get_data(filename)
+        Model.get_data()
 
     def do_save_data(self, args):
         """
@@ -387,6 +385,7 @@ class Controller(cmd.Cmd):
 
 
 if __name__ == '__main__':
+
     controller = Controller()
     controller.prompt = ':) '
     controller.cmdloop('Starting prompt...')

@@ -1,123 +1,68 @@
-"""
-need to make code more testable!!!
-"""
+>>> from Assignment1SalesApp import Model, View, Controller
 
-
->>> from Assignment1SalesApp import Model
-
->>> True
+>>> False
 True
 
->>> Model.id_list[3] is None
-True
+>>> Model.get_data("not_a_file.txt")
+IO error, not reading file. Try entering filename again
+'get_data(not_a_file.txt) run'
 
->>> Model.gender_list[3]
-'F'
+>>> Model.get_data("loadData_Empty.txt")
+'get_data(loadData_Empty.txt) run'
 
->>> Model.id_list[1] is None
-True
+>>> Model.serialise_data()
+called serialise_data()
 
-#Raw input is "c234", should return None because
-the input has a lower case first char.
+>>> Model.load_serialised_data()
+called load_serialised_data()
 
->>> Model.id_list[3] is None
-True
+>>> Model.validate_id("A111")
+'A111'
 
-#Raw input is "E30", should return None because
-the input is not long enough.
+>>> Model.validate_id("b222")
+id format incorrect: id entered as None
 
->>> Model.id_list[5] is None
-True
+>>> Model.validate_gender("this isn't a gender")
+gender format incorrect:  entered as None
 
-#Raw input is "F456", should return "F456" because
-the input is in correct format.
->>> Model.id_list[6]
-"F456"
+>>> Model.validate_gender("M")
+'M'
 
->>> Model.gender_list[1] is None
-True
+>>> Model.validate_age("22")
+22
 
-#Raw input is " ", should return 0 because not a valid input.
->>> Model.gender_list[6] is None
-True
+>>> Model.validate_age("this is not an age")
+age format incorrect:  entered as 0
+0
 
-#Raw input is "F", should return "F" because it is valid input.
->>> Model.gender_list[3]
-'F'
+>>> Model.validate_sales("555")
+555
 
-#Raw input is "2", should return 0 as input is in
-invalid format.
+>>> Model.validate_sales("this is not a sales figure")
+sales format incorrect:  entered as 0
+0
 
->>> Model.age_list[0] is 0
-True
+>>> Model.validate_bmi("Normal")
+'Normal'
 
-#Raw input is "1S", should return 0 as input has a
-non-int character in it.
+>>> Model.validate_bmi("this is not a bmi")
+bmi format incorrect:  entered as None
 
->>> Model.age_list[7] is 0
-True
+>>> Model.validate_income("333")
+333
 
-#Raw input is "60", should return "60" as it is valid.
+>>> Model.validate_income("this is not an income")
+income format incorrect:  entered as 0
+0
 
->>> Model.age_list[9]
-'60'
+>>> View.pie_chart_gender()
+pie_chart_gender run
 
-#Raw input is "54", should return 0, because input in
-incorrect format.
+>>> View.pie_chart_bmi()
+pie_chart_bmi run
 
->>> Model.sales_list[6] is 0
-True
+>>> Controller.do_load_file("")
+IO error, not reading file. Try entering filename again
 
-#Raw input is "5554", should return 0, because input is in
-incorrect format, too long
 
->>> Model.sales_list[7] is 0
-True
 
-#Raw input is "222", should return "222" as it's correct format
-
->>> Model.sales_list[0]
-'222'
-
-#Raw input is "underweight", should return None as first char
-is lowercase
-
->>> Model.bmi_list[1] is None
-True
-
-#Raw input is " ", should return None as field is empty
-
->>> Model.bmi_list[4] is None
-True
-
-#Raw input is "Normal", should return "Normal" as is correct format
-
->>> Model.bmi_list[0]
-'Overweight'
-
-#Raw input is "8", should return 0, incorrect format, only 1 number
-
->>> Model.income_list[2] is 0
-True
-
-#Raw input is " ", should return 0 as it is an empty field
-
->>> Model.income_list[3] is 0
-True
-
-#Raw input is "999", should return "999" as is in correct format
->>> Model.income_list[0]
-'999'
-
-#Raw input is "87", should return "87" because it is correct format
->>> Model.income_list[1]
-'87'
-
->>> Model.fake
-'44'
-
->>> Model.SayHi()
-'hi'
-
->>> Model.SayHi()
-'' 
