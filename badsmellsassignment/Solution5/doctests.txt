@@ -10,6 +10,21 @@ IO error, not reading file. Try entering filename again
 >>> Model.get_data("loadData_Empty.txt")
 'get_data(loadData_Empty.txt) run'
 
+>>> Model.get_data("loadData_Bad.txt")
+id format incorrect: id entered as None
+gender format incorrect:  entered as None
+bmi format incorrect:  entered as None
+income format incorrect:  entered as 0
+id format incorrect: id entered as None
+income format incorrect:  entered as 0
+bmi format incorrect:  entered as None
+id format incorrect: id entered as None
+gender format incorrect:  entered as None
+sales format incorrect:  entered as 0
+age format incorrect:  entered as 0
+gender format incorrect:  entered as None
+'get_data(loadData_Bad.txt) run'
+
 >>> Model.serialise_data()
 called serialise_data()
 
@@ -64,5 +79,14 @@ pie_chart_bmi run
 >>> Controller.do_load_file("")
 IO error, not reading file. Try entering filename again
 
+>>> Controller.do_save_data("")
+called serialise_data()
 
+>>> Controller.do_load_saved_file("")
+called load_serialised_data()
 
+>>> Controller.do_display_gender_data("","")
+pie_chart_gender run
+
+>>> Controller.do_display_bmi_data("","")
+pie_chart_bmi run

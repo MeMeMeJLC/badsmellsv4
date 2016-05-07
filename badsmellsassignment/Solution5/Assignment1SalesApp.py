@@ -5,8 +5,6 @@ import doctest
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-#mport unittest
-
 
 
 class MyFileExistsError(Exception):
@@ -25,8 +23,6 @@ class Model():
 
     def get_data(filename):
 
-        """filename = input("Enter the destination/filename. \
-        Eg: D:/data/load_data.txt")"""
         try:
             with open(filename, 'r') as f:
                 for line in f:
@@ -63,71 +59,9 @@ class Model():
     def serialise_data():
 
         print("called serialise_data()")
-        """
-        toSerialiseList = ""
-        for element in Model.id_list:
-            i = Model.id_list.index(element)
-            toSerialiseList = toSerialiseList + Model.id_list[i] + " " \
-                + Model.gender_list[i] + " " + str(Model.age_list[i]) + " " + \
-                str(Model.sales_list[i]) + " " + Model.bmi_list[i] + " " \
-                + str(Model.income_list[i]) + os.linesep
-        print(toSerialiseList)
-
-        if Model.id_list or Model.gender_list or Model.age_list or \
-            Model.sales_list or Model.bmi_list or Model.income_list:
-                serialise_location = input('Enter location/filename to save \
-                    to: ')
-                try:
-                    with open(serialise_location + '.pickle', 'wb') as f:
-                        pickle.dump(str(toSerialiseList), f)
-                except MyFileExistsError:
-                    overwrite = input("File already exists. Overwrite it? \
-                        Y or N")
-                    if overwrite == 'Y' or 'y':
-                        with open(serialise_location + '.pickle', 'wb') as f:
-                            pickle.dump(str(toSerialiseList), f)
-        else:
-            print("No data to save")
-        """
 
     def load_serialised_data():
         print("called load_serialised_data()")
-        """
-        load_serial_data = input('Would you like to reload saved data? Y or N')
-        if load_serial_data == 'y' or 'Y':
-            serialise_location = input('Enter location/filename to save to: ')
-            try:
-                with open(serialise_location + '.pickle', 'rb') as f:
-                    data = pickle.load(f)
-                    for line in f:
-                        raw_line_data = line
-                        i = 0
-                        for element in raw_line_data.split():
-                            if i == 0:
-                                element = Model.validate_id(element)
-                                Model.id_list.append(element)
-                            elif i == 1:
-                                element = Model.validate_gender(element)
-                                Model.gender_list.append(element)
-                            elif i == 2:
-                                element = Model.validate_age(element)
-                                Model.age_list.append(element)
-                            elif i == 3:
-                                element = Model.validate_sales(element)
-                                Model.sales_list.append(element)
-                            elif i == 4:
-                                element = Model.validate_bmi(element)
-                                Model.bmi_list.append(element)
-                            elif i == 5:
-                                element = Model.validate_income(element)
-                                Model.income_list.append(element)
-                            else:
-                                print("error in get_data() raw_line_data")
-                            i += 1
-            except OSError.FileNotFoundError:
-                    print('File not found. Try again')
-                    load_serialised_data()
-            """
 
     def validate_id(id):
 
@@ -190,20 +124,6 @@ class Model():
             return int(income)
 
 class View():
-    pass
-
-    """ def scatter_plot(x, xName, y, yName):
-
-        arrayX = np.array(x)
-        arrayY = np.array(y)
-
-        plt.bar(x, y)
-
-        plt.xlabel('x')
-        plt.ylabel('y')
-        plt.title('Interesting graph\nCheck it out')
-        plt.legend()
-        plt.show()"""
 
     def pie_chart_gender():
         m_count = 0
@@ -245,40 +165,32 @@ class View():
 
         for element in Model.bmi_list:
             if element == 'Obesity':
-                print('ob')
                 obesity_count += 1
                 all_valid_count += 1
             elif element == 'Overweight':
-                print('ov')
                 overweight_count += 1
                 all_valid_count += 1
             elif element == 'Normal':
-                print('norm')
                 normal_count += 1
                 all_valid_count += 1
             elif element == 'Underweight':
-                print('und')
                 underweight_count += 1
                 all_valid_count += 1
 
         try:
             ob_percent = obesity_count / all_valid_count * 100
-            print('obese ' + str(ob_percent))
         except ZeroDivisionError:
             ob_percent = 0
         try:
             ov_percent = overweight_count / all_valid_count * 100
-            print('over ' + str(ov_percent))
         except ZeroDivisionError:
             ov_percent = 0
         try:
             norm_percent = normal_count / all_valid_count * 100
-            print('norm ' + str(norm_percent))
         except ZeroDivisionError:
             norm_percent = 0
         try:
             und_percent = underweight_count / all_valid_count * 100
-            print("und " + str(und_percent) + ' ' + str(underweight_count))
         except ZeroDivisionError:
             und_percent = 0
 
@@ -312,7 +224,7 @@ class Controller(cmd.Cmd):
         Eg: D:/data/load_data.txt")
         Model.get_data(filename)
 
-    def do_save_data(self, args):
+    def do_save_data(self):
         """
         :method: save_data
         :description: Saves data as a serialised file to access later.
@@ -321,7 +233,7 @@ class Controller(cmd.Cmd):
         """
         Model.serialise_data()
 
-    def do_load_saved_file(self, args):
+    def do_load_saved_file(self):
         """
         :method: load_saved_file
         :description: If data has been saved previously it can be reloaded.
@@ -338,12 +250,13 @@ class Controller(cmd.Cmd):
         chart of the percentage of Male and Female employees. If data has not
         already been loaded the user will be prompted to enter the
         location/filename of data to be loaded.
-        :param: self
+        :param: none
         :return: A pie chart of genders of employees
         """
+        filename = args
         if not Model.gender_list:
             print("No data loaded, please enter data location")
-            Model.get_data()
+            Model.get_data(filename)
             if Model.gender_list:
                 View.pie_chart_gender()
         else:
@@ -359,9 +272,10 @@ class Controller(cmd.Cmd):
         :param: self
         :return: A pie chart of bmi categories of employees.
         """
+        filename = args
         if not Model.bmi_list:
             print("No data loaded, please enter data location")
-            Model.get_data()
+            Model.get_data(filename)
             if Model.bmi_list:
                 View.pie_chart_bmi()
         else:
@@ -372,10 +286,10 @@ class Controller(cmd.Cmd):
         :method: quit or q
         :description: Quit the application. Will prompt the user as to
         whether the user would like to save the data serialised.
-        :param: self
+        :param: none
         :return: Will exit the app.
         """
-        doctest.testfile("doctests.txt")
+        #doctest.testfile("doctests.txt")
 
         print('Quitting...')
         raise SystemExit
@@ -389,4 +303,5 @@ class Controller(cmd.Cmd):
 if __name__ == '__main__':
     controller = Controller()
     controller.prompt = ':) '
+    doctest.testfile("doctests.txt")
     controller.cmdloop('Starting prompt...')
