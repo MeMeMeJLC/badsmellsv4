@@ -1,0 +1,52 @@
+Smell Detection
+1.
+	Name: Duplicate Code
+	Location: Solution5\Assignment1SalesApp.py class:Model
+		function:validate_id() lines: 66 to 74) and
+		function:validate_gender() lines: 76 to 84
+	Resons: 
+		a) The functions are copy and pasted, and just the particular regex statement and the name of the parameter being regexed have been changed. 
+		b) This has caused extra lines of code to be used making the class more difficult to read.
+		c) If the procedure for validating was required to change the change would have to be repeated in each function. This creates extra, unnecessary coding.
+		d) If changes were made there would be a risk that the change is not implemented the same in all places leading to a potential bug.
+		e) Makes the code less attractive and elegant. 
+	Strategy: Use the extract method. Make a new method with all of the similar elements within it and just call that method and pass in the differences as parameters.
+	Severity (1-10): 6
+	Ease of fix (1-10): 5
+
+2.
+	Name: Dead Code
+	Location: Solution5\Assignment1SalesApp.py class:Model
+		function: serialise_data() lines: 59 to 61
+		function: load_serialised_data() lines: 63 to 64
+	Reasons:
+		a) These methods do nothing apart from print that the function has been called. So currently useless.
+		b) Was part of future development or project plan that was not implemented.
+		c) Waste of lines of code.
+		d) Even if these are required later it is just as easy to delete them now. The future design plans are much better being noted in documentation rather than noting it in code.
+		e) Extra functions for a developer to get their head around, which even if they are simple and small they still waste time.
+	Strategy: Delete the unused code. Make sure they are noted in the documents as maybe part of a plan for future development.
+	Severity (1-10): 2
+	Ease of fix (1-10): 10
+
+3.
+	Name: Switch Statements
+	Location: Solution5\Assignment1SalesApp.py class:Model
+		function: get_data() lines: 31 to 52
+	Reasons: 
+		a) Uses many extra lines of code.
+		b) Each if statement is performing a similar task. These tasks will end up as the same method after fixing the duplicate code in bad smell 1.
+		c) The if conditionals aren't really necessary because the data is in order and the if's are performed in sequence on the data. It is just iterating through the data.
+	Strategy: Get rid of the switch statement and just have it iterating through the data and performing the validation in sequence. This is a particular strategy to fix this particular poorly written code, and is not a standard technique to fix this problem. The suggested strategies were not going to solve the problem effectively.
+	Severity: 7
+	Ease of fix: 4
+		
+4. 	Name: Long Method
+	Location: Solution5\Assignment1SalesApp.py class:View
+		function: pie_chart_bmi() lines: 159 - 206
+	Reasons: 
+		a) It is much longer than the standard rule of 10 lines.
+		b) Has elements of other bad smells Duplicate Code and Switch Statement.
+	Strategy: Use extract method on the duplicate code and switch statements.
+	Severity (1-10): 7
+	Ease of fix (1-10): 2
