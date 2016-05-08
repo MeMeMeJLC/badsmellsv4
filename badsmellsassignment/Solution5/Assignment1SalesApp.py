@@ -56,6 +56,16 @@ class Model():
 
         return "get_data(" + filename + ") run"
 
+    def validate(element, regex_statement):
+        match_element = re.match(regex_statement, element)
+        if match_element is None or len(element) is not 4:
+            print('id format incorrect: id entered as None')
+            id = None
+            return id
+        else:
+            return id
+
+    """
     def validate_id(id):
 
         match_id = re.match('[A-Z][0-9]{3}', id)
@@ -115,6 +125,7 @@ class Model():
             return income
         else:
             return int(income)
+        """
 
 class View():
 

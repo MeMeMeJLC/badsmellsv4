@@ -26,7 +26,7 @@ gender format incorrect:  entered as None
 'B204'
 
 >>> Model.validate("d", "(M|F)")
-None
+element format incorrect: id entered as None
 
 >>> Model.validate_id("A111")
 'A111'
