@@ -22,6 +22,12 @@ age format incorrect:  entered as 0
 gender format incorrect:  entered as None
 'get_data(loadData_Bad.txt) run'
 
+>>> Model.validate("B204", "[A-Z][0-9]{3}")
+'B204'
+
+>>> Model.validate("d", "(M|F)")
+None
+
 >>> Model.validate_id("A111")
 'A111'
 
