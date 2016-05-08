@@ -30,22 +30,22 @@ class Model():
                     i = 0
                     for element in raw_line_data.split():
                         if i == 0:
-                            element = Model.validate_id(element)
+                            element = Model.validate(element, '[A-Z][0-9]{3}')
                             Model.id_list.append(element)
                         elif i == 1:
-                            element = Model.validate_gender(element)
+                            element = Model.validate(element, '(M|F)')
                             Model.gender_list.append(element)
                         elif i == 2:
-                            element = Model.validate_age(element)
+                            element = Model.validate(element, '[0-9]{2}')
                             Model.age_list.append(element)
                         elif i == 3:
-                            element = Model.validate_sales(element)
+                            element = Model.validate(element, '[0-9]{3}')
                             Model.sales_list.append(element)
                         elif i == 4:
-                            element = Model.validate_bmi(element)
+                            element = Model.validate(element, '(Normal|Overweight|Obesity|Underweight)')
                             Model.bmi_list.append(element)
                         elif i == 5:
-                            element = Model.validate_income(element)
+                            element = Model.validate(element, '[0-9]{2,3}')
                             Model.income_list.append(element)
                         else:
                             print("error in get_data() raw_line_data")
@@ -58,12 +58,12 @@ class Model():
 
     def validate(element, regex_statement):
         match_element = re.match(regex_statement, element)
-        if match_element is None or len(element) is not 4:
-            print('id format incorrect: id entered as None')
-            id = None
-            return id
+        if match_element is None:
+            print('element format incorrect: element entered as None')
+            element = None
+            return element
         else:
-            return id
+            return element
 
     """
     def validate_id(id):

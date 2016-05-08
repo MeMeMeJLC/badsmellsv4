@@ -8,64 +8,54 @@ IO error, not reading file. Try entering filename again
 'get_data(loadData_Empty.txt) run'
 
 >>> Model.get_data("loadData_Bad.txt")
-id format incorrect: id entered as None
-gender format incorrect:  entered as None
-bmi format incorrect:  entered as None
-income format incorrect:  entered as 0
-id format incorrect: id entered as None
-income format incorrect:  entered as 0
-bmi format incorrect:  entered as None
-id format incorrect: id entered as None
-gender format incorrect:  entered as None
-sales format incorrect:  entered as 0
-age format incorrect:  entered as 0
-gender format incorrect:  entered as None
+element format incorrect: element entered as None
+element format incorrect: element entered as None
+element format incorrect: element entered as None
+element format incorrect: element entered as None
+element format incorrect: element entered as None
+element format incorrect: element entered as None
+element format incorrect: element entered as None
+element format incorrect: element entered as None
+element format incorrect: element entered as None
+element format incorrect: element entered as None
+element format incorrect: element entered as None
 'get_data(loadData_Bad.txt) run'
 
 >>> Model.validate("B204", "[A-Z][0-9]{3}")
 'B204'
 
 >>> Model.validate("d", "(M|F)")
-element format incorrect: id entered as None
+element format incorrect: element entered as None
 
->>> Model.validate_id("A111")
-'A111'
+>>> Model.validate("this isn't a gender", "(M|F)")
+element format incorrect: element entered as None
 
->>> Model.validate_id("b222")
-id format incorrect: id entered as None
-
->>> Model.validate_gender("this isn't a gender")
-gender format incorrect:  entered as None
-
->>> Model.validate_gender("M")
+>>> Model.validate("M", "(M|F)")
 'M'
 
->>> Model.validate_age("22")
-22
+>>> Model.validate('22', '[0-9]{2}')
+'22'
 
->>> Model.validate_age("this is not an age")
-age format incorrect:  entered as 0
-0
+>>> Model.validate("this is not an age", '[0-9]{2}')
+element format incorrect: element entered as None
 
->>> Model.validate_sales("555")
-555
+>>> Model.validate('555', '[0-9]{3}')
+'555'
 
->>> Model.validate_sales("this is not a sales figure")
-sales format incorrect:  entered as 0
-0
+>>> Model.validate("this is not a sales figure", '[0-9]{3}')
+element format incorrect: element entered as None
 
->>> Model.validate_bmi("Normal")
+>>> Model.validate("Normal", '(Normal|Overweight|Obesity|Underweight)')
 'Normal'
 
->>> Model.validate_bmi("this is not a bmi")
-bmi format incorrect:  entered as None
+>>> Model.validate("this is not a bmi", '(Normal|Overweight|Obesity|Underweight)')
+element format incorrect: element entered as None
 
->>> Model.validate_income("333")
-333
+>>> Model.validate('333', '[0-9]{2,3}')
+'333'
 
->>> Model.validate_income("this is not an income")
-income format incorrect:  entered as 0
-0
+>>> Model.validate("this is not an income", '[0-9]{2,3}')
+element format incorrect: element entered as None
 
 >>> View.pie_chart_gender()
 pie_chart_gender run

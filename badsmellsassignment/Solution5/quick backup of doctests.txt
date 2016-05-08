@@ -1,0 +1,83 @@
+>>> from Assignment1SalesApp import Model, View, Controller
+
+>>> Model.get_data("not_a_file.txt")
+IO error, not reading file. Try entering filename again
+'get_data(not_a_file.txt) run'
+
+>>> Model.get_data("loadData_Empty.txt")
+'get_data(loadData_Empty.txt) run'
+
+>>> Model.get_data("loadData_Bad.txt")
+id format incorrect: id entered as None
+gender format incorrect:  entered as None
+bmi format incorrect:  entered as None
+income format incorrect:  entered as 0
+id format incorrect: id entered as None
+income format incorrect:  entered as 0
+bmi format incorrect:  entered as None
+id format incorrect: id entered as None
+gender format incorrect:  entered as None
+sales format incorrect:  entered as 0
+age format incorrect:  entered as 0
+gender format incorrect:  entered as None
+'get_data(loadData_Bad.txt) run'
+
+>>> Model.validate("B204", "[A-Z][0-9]{3}")
+'B204'
+
+>>> Model.validate("d", "(M|F)")
+element format incorrect: id entered as None
+
+>>> Model.validate_id("A111")
+'A111'
+
+>>> Model.validate_id("b222")
+id format incorrect: id entered as None
+
+>>> Model.validate_gender("this isn't a gender")
+gender format incorrect:  entered as None
+
+>>> Model.validate_gender("M")
+'M'
+
+>>> Model.validate_age("22")
+22
+
+>>> Model.validate_age("this is not an age")
+age format incorrect:  entered as 0
+0
+
+>>> Model.validate_sales("555")
+555
+
+>>> Model.validate_sales("this is not a sales figure")
+sales format incorrect:  entered as 0
+0
+
+>>> Model.validate_bmi("Normal")
+'Normal'
+
+>>> Model.validate_bmi("this is not a bmi")
+bmi format incorrect:  entered as None
+
+>>> Model.validate_income("333")
+333
+
+>>> Model.validate_income("this is not an income")
+income format incorrect:  entered as 0
+0
+
+>>> View.pie_chart_gender()
+pie_chart_gender run
+
+>>> View.pie_chart_bmi()
+pie_chart_bmi run
+
+>>> Controller.do_load_file("")
+IO error, not reading file. Try entering filename again
+
+>>> Controller.do_display_gender_data("","")
+pie_chart_gender run
+
+>>> Controller.do_display_bmi_data("","")
+pie_chart_bmi run

@@ -19,7 +19,15 @@ Smell Detection
 	Ease of fix (1-10): 5
 	
 	Notes on the fix:
-		a) Total lines of code before fix equal: 42(approx)
+		a) Lines of code of the bad smell methods before fix = 42
+		b) Commented out the code with the bad smell. Will delete when refactoring is finished and tested. Made the changes and ran the tests. Expected some of the tests to fail as they were testing methods that no longer existed. Looks like there was an unexpected problem with the data not loading.
+		c) Found the problem from note b). The particular method I used as the basis for the new method had an extra check for the length of the element, which did not apply to all different cases. The length was added as a check for some cases because the regex wasn't picking up elements that didn't match because they were too long. I will perform a test to see if this is still the case.
+		d) Currently throwing up 15 test failures. Seeing if this decreases when the old method call tests are changed. Changing 2 tests to test my theory.
+		e) Decreased to 13 after 2 tests were changed. Will continue changes on the rest.
+		f) Tests now fixed, but this is high risk to change the tests on the fly. Must need to make sure in the future that tests are thoroughly put in place and checked before the refactoring takes place. Can increase risk that bugs are missed.
+		g) Tests now passing so will delete the commented out bad smell code. 
+		h) Lines of code of the bad smell methods after fix = 7
+		i) Backed up to GitHub.
 
 2.
 	Name: Dead Code
