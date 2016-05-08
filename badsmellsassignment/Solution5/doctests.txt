@@ -1,8 +1,5 @@
 >>> from Assignment1SalesApp import Model, View, Controller
 
->>> False
-True
-
 >>> Model.get_data("not_a_file.txt")
 IO error, not reading file. Try entering filename again
 'get_data(not_a_file.txt) run'
@@ -24,12 +21,6 @@ sales format incorrect:  entered as 0
 age format incorrect:  entered as 0
 gender format incorrect:  entered as None
 'get_data(loadData_Bad.txt) run'
-
->>> Model.serialise_data()
-called serialise_data()
-
->>> Model.load_serialised_data()
-called load_serialised_data()
 
 >>> Model.validate_id("A111")
 'A111'
@@ -78,12 +69,6 @@ pie_chart_bmi run
 
 >>> Controller.do_load_file("")
 IO error, not reading file. Try entering filename again
-
->>> Controller.do_save_data("")
-called serialise_data()
-
->>> Controller.do_load_saved_file("")
-called load_serialised_data()
 
 >>> Controller.do_display_gender_data("","")
 pie_chart_gender run

@@ -3,7 +3,11 @@ Smell Detection
 	Name: Duplicate Code
 	Location: Solution5\Assignment1SalesApp.py class:Model
 		function:validate_id() lines: 66 to 74) and
-		function:validate_gender() lines: 76 to 84
+		function:validate_gender() lines: 76 to 84 and 
+		function:validate_age() lines: 79 to 87 and 
+		function:validate_sales() lines: 89 to 97 and 
+		function:validate_bmi() lines: 99 to 107 and 
+		function:validate_gender() lines: 109 to 117
 	Resons: 
 		a) The functions are copy and pasted, and just the particular regex statement and the name of the parameter being regexed have been changed. 
 		b) This has caused extra lines of code to be used making the class more difficult to read.
@@ -13,6 +17,9 @@ Smell Detection
 	Strategy: Use the extract method. Make a new method with all of the similar elements within it and just call that method and pass in the differences as parameters.
 	Severity (1-10): 6
 	Ease of fix (1-10): 5
+	
+	Notes on the fix:
+		a) Total lines of code before fix equal: 42(approx)
 
 2.
 	Name: Dead Code
@@ -28,6 +35,13 @@ Smell Detection
 	Strategy: Delete the unused code. Make sure they are noted in the documents as maybe part of a plan for future development.
 	Severity (1-10): 2
 	Ease of fix (1-10): 10
+	
+	Notes on the fix:
+		a) The first fix completed. Very simple fix so only backed up to GitHub once before fix made, and after fix made and tests run succesfully. Must make sure the more complex fixes are backed up after each small change. 
+		b) By getting rid of these methods it has affected other methods I had forgotten about in the Controller class, namely the do_save_data() and  do_load_saved_file(). These were solely responsible for calling the dead code methods. Therefore I have deleted those as well. 
+		c) When running the tests after making the changes as expected some of the tests are now irrelevant as they were checking that those methods were running. I am therefore getting rid of those tests.
+		d) 
+		
 
 3.
 	Name: Switch Statements

@@ -56,13 +56,6 @@ class Model():
 
         return "get_data(" + filename + ") run"
 
-    def serialise_data():
-
-        print("called serialise_data()")
-
-    def load_serialised_data():
-        print("called load_serialised_data()")
-
     def validate_id(id):
 
         match_id = re.match('[A-Z][0-9]{3}', id)
@@ -223,25 +216,6 @@ class Controller(cmd.Cmd):
         filename = input("Enter the destination/filename. \
         Eg: D:/data/load_data.txt")
         Model.get_data(filename)
-
-    def do_save_data(self):
-        """
-        :method: save_data
-        :description: Saves data as a serialised file to access later.
-        :param: self, args
-        :return: Data saved in a serialised file
-        """
-        Model.serialise_data()
-
-    def do_load_saved_file(self):
-        """
-        :method: load_saved_file
-        :description: If data has been saved previously it can be reloaded.
-        This is not for text files, but for serialised data.
-        :param: self
-        :return: Data reloaded from a previously saved file.
-        """
-        Model.load_serialised_data()
 
     def do_display_gender_data(self, args):
         """
