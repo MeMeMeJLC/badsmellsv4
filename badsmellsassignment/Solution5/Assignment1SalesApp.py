@@ -20,37 +20,22 @@ class Model():
     sales_list = list()
     bmi_list = list()
     income_list = list()
+    type_of_list = [id_list, gender_list, age_list, sales_list, bmi_list,
+    income_list]
 
     def get_data(filename):
-
         try:
             with open(filename, 'r') as f:
                 for line in f:
                     raw_line_data = line
                     i = 0
+                    regex_list = ['[A-Z][0-9]{3}', '(M|F)', '[0-9]{2}',
+                    '[0-9]{3}', '(Normal|Overweight|Obesity|Underweight)',
+                    '[0-9]{2,3}']
                     for element in raw_line_data.split():
-                        if i == 0:
-                            element = Model.validate(element, '[A-Z][0-9]{3}')
-                            Model.id_list.append(element)
-                        elif i == 1:
-                            element = Model.validate(element, '(M|F)')
-                            Model.gender_list.append(element)
-                        elif i == 2:
-                            element = Model.validate(element, '[0-9]{2}')
-                            Model.age_list.append(element)
-                        elif i == 3:
-                            element = Model.validate(element, '[0-9]{3}')
-                            Model.sales_list.append(element)
-                        elif i == 4:
-                            element = Model.validate(element, '(Normal|Overweight|Obesity|Underweight)')
-                            Model.bmi_list.append(element)
-                        elif i == 5:
-                            element = Model.validate(element, '[0-9]{2,3}')
-                            Model.income_list.append(element)
-                        else:
-                            print("error in get_data() raw_line_data")
+                        element = Model.validate(element, regex_list[i])
+                        Model.type_of_list[i].append(element)
                         i += 1
-
         except IOError:
             print("IO error, not reading file. Try entering filename again")
 
