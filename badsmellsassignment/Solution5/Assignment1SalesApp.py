@@ -38,7 +38,6 @@ class Model():
                         i += 1
         except IOError:
             print("IO error, not reading file. Try entering filename again")
-
         return "get_data(" + filename + ") run"
 
     def validate(element, regex_statement):

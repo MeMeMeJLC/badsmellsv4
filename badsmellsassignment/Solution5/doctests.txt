@@ -57,11 +57,21 @@ element format incorrect: element entered as None
 >>> Model.validate("this is not an income", '[0-9]{2,3}')
 element format incorrect: element entered as None
 
+>>> Model.gender_list = ['M', 'F', 'F', 'M', 'F']
+
 >>> View.pie_chart_gender()
 pie_chart_gender run
 
+>>> Model.gender_list = []
+
+>>> View.pie_chart_gender()
+
 >>> View.pie_chart_bmi()
 pie_chart_bmi run
+
+>>> Model.bmi_list = []
+
+>>> View.pie_chart_bmi
 
 >>> Controller.do_load_file("")
 IO error, not reading file. Try entering filename again

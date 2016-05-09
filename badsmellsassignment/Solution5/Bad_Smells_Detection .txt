@@ -61,6 +61,11 @@ Smell Detection
 	Strategy: Get rid of the switch statement and just have it iterating through the data and performing the validation in sequence. This is a particular strategy to fix this particular poorly written code, and is not a standard technique to fix this problem. The suggested strategies were not going to solve the problem effectively.
 	Severity: 7
 	Ease of fix: 4
+	
+		notes on the fix:
+			a) third fix completed
+			b) had some issues getting it to work. Test data wasn't loading. But now have that working. 
+			c) shrank the code. get_data() went from 21 lines to 15 lines.
 		
 4. 	Name: Long Method
 	Location: Solution5\Assignment1SalesApp.py class:View
