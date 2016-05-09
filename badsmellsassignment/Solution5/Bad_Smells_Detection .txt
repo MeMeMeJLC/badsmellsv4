@@ -48,7 +48,6 @@ Smell Detection
 		a) The first fix completed. Very simple fix so only backed up to GitHub once before fix made, and after fix made and tests run succesfully. Must make sure the more complex fixes are backed up after each small change. 
 		b) By getting rid of these methods it has affected other methods I had forgotten about in the Controller class, namely the do_save_data() and  do_load_saved_file(). These were solely responsible for calling the dead code methods. Therefore I have deleted those as well. 
 		c) When running the tests after making the changes as expected some of the tests are now irrelevant as they were checking that those methods were running. I am therefore getting rid of those tests.
-		d) 
 		
 
 3.

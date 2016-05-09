@@ -65,68 +65,6 @@ class Model():
         else:
             return element
 
-    """
-    def validate_id(id):
-
-        match_id = re.match('[A-Z][0-9]{3}', id)
-        if match_id is None or len(id) is not 4:
-            print('id format incorrect: id entered as None')
-            id = None
-            return id
-        else:
-            return id
-
-    def validate_gender(gender):
-
-        match_gender = re.match('(M|F)', gender)
-        if match_gender is None:
-            print('gender format incorrect:  entered as None')
-            gender = None
-            return gender
-        else:
-            return gender
-
-    def validate_age(age):
-
-        match_age = re.match('[0-9]{2}', age)
-        if match_age is None or len(age) is not 2:
-            print('age format incorrect:  entered as 0')
-            age = 0
-            return age
-        else:
-            return int(age)
-
-    def validate_sales(sales):
-
-        match_sales = re.match('[0-9]{3}', sales)
-        if match_sales is None or len(sales) is not 3:
-            print('sales format incorrect:  entered as 0')
-            sales = 0
-            return sales
-        else:
-            return int(sales)
-
-    def validate_bmi(bmi):
-
-        match_bmi = re.match('(Normal|Overweight|Obesity|Underweight)', bmi)
-        if match_bmi is None:
-            print('bmi format incorrect:  entered as None')
-            bmi = None
-            return bmi
-        else:
-            return bmi
-
-    def validate_income(income):
-
-        match_income = re.match('[0-9]{2,3}', income)
-        if match_income is None or len(income) > 3:
-            print('income format incorrect:  entered as 0')
-            income = 0
-            return income
-        else:
-            return int(income)
-        """
-
 class View():
 
     def pie_chart_gender():
