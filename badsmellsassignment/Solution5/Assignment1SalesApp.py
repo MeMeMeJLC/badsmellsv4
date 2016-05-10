@@ -21,7 +21,7 @@ class Model():
     bmi_list = list()
     income_list = list()
     type_of_list = [id_list, gender_list, age_list, sales_list, bmi_list,
-    income_list]
+                    income_list]
 
     def get_data(filename):
         try:
@@ -29,9 +29,11 @@ class Model():
                 for line in f:
                     raw_line_data = line
                     i = 0
-                    regex_list = ['[A-Z][0-9]{3}', '(M|F)', '[0-9]{2}',
-                    '[0-9]{3}', '(Normal|Overweight|Obesity|Underweight)',
-                    '[0-9]{2,3}']
+                    regex_list = [
+                                    '[A-Z][0-9]{3}', '(M|F)', '[0-9]{2}',
+                                    '[0-9]{3}',
+                                    '(Normal|Overweight|Obesity|Underweight)',
+                                    '[0-9]{2,3}']
                     for element in raw_line_data.split():
                         element = Model.validate(element, regex_list[i])
                         Model.type_of_list[i].append(element)
@@ -48,6 +50,7 @@ class Model():
             return element
         else:
             return element
+
 
 class View():
 
@@ -196,7 +199,6 @@ class Controller(cmd.Cmd):
         :param: none
         :return: Will exit the app.
         """
-        #doctest.testfile("doctests.txt")
 
         print('Quitting...')
         raise SystemExit

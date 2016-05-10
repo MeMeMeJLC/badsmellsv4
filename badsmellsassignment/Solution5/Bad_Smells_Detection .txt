@@ -8,7 +8,7 @@ Smell Detection
 		function:validate_sales() lines: 89 to 97 and 
 		function:validate_bmi() lines: 99 to 107 and 
 		function:validate_gender() lines: 109 to 117
-	Resons: 
+	Reasons: 
 		a) The functions are copy and pasted, and just the particular regex statement and the name of the parameter being regexed have been changed. 
 		b) This has caused extra lines of code to be used making the class more difficult to read.
 		c) If the procedure for validating was required to change the change would have to be repeated in each function. This creates extra, unnecessary coding.
@@ -66,6 +66,7 @@ Smell Detection
 			a) third fix completed
 			b) had some issues getting it to work. Test data wasn't loading. But now have that working. 
 			c) shrank the code. get_data() went from 21 lines to 15 lines.
+			d) ran tests successfully and updated version control.
 		
 4. 	Name: Long Method
 	Location: Solution5\Assignment1SalesApp.py class:View
@@ -76,3 +77,8 @@ Smell Detection
 	Strategy: Use extract method on the duplicate code and switch statements.
 	Severity (1-10): 7
 	Ease of fix (1-10): 2
+	
+Overall evaluation / summary of the fixing bad smells process:
+	1) I largely stuck to the process outlined in class. Although I could have done better at breaking down the harder fixes into smaller chunks, rather than trying to do the whole fix at one time. Could have cost me time if the fix had gone wrong and I had to go back to where I had last backed up.
+	2) I approached my bad smells from the wrong way. Because of my limited time budgeted for the assignment I focussed on the easy fixes first, and avoided the hardest one, the Long Method. In the future I would want to attack the biggest bad smell first. 
+	3) The biggest problem in my process was not adequately outlining the outcomes I needed to return after each refactor. I did not work out properly what I needed to test to ensure the refactoring worked, only considered that tests may need to change once I started refactoring. This risked introducing bugs. 

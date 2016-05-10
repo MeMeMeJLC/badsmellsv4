@@ -1,0 +1,29 @@
+Jeremy Cook Self Marking Sheet Assignment 2 
+
+1. Smell Detection 4 * 3 Marks
+	*I identified a total of 4 different types of bad smells. More than required. 
+	--3/3 Marks--
+	
+	*I discussed the reasons behind why I believed each was a bad smell. 
+	--3/3 Marks--
+	
+	*Identified the strategy and approach I was going to use for each of the 3 I ended up carrying out. 
+	--3/3 marks--
+	
+	*All smell detection process outlined in Bad_Smells_Detection.txt.
+	
+2. Tests Development 4 * 3 Marks
+	*Developed a set of doctests to test that functionality was not harmed when fixing the bad smells. Taking off a couple of marks because sometimes I had to change tests after I started the fix. 
+	--7/9 Marks--
+	
+	*All tests ran together for running the one file. Coverage greater than 80%. 
+	--3/3 Marks--
+	
+3. Refactoring 4 * 3 Marks
+	*Version control at all stages at https://github.com/MeMeMeJLC/badsmellsv4/tree/master/badsmellsassignment/Solution5 and testing throughout. 
+	--3/3 Marks--
+	
+	*I made the appropriate fixes via modifications to source code that fit with the strategy outlined during smell detection. Made sure the source code and doctests were PEP8 valid. 
+	--6/6 marks--
+	
+	*Evaluated the effectiveness of the fixes and the process I undertook. Evaluation is in Bad_Smells_Detection.txt. --3/3 marks--
