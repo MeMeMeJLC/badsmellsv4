@@ -6,13 +6,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-
-class MyFileExistsError(Exception):
-    def __init__(self):
-        Exception.__init__(self, "file alreadys exists, try again with a \
-        different name or location")
-
-
 class Model():
     id_list = list()
     gender_list = list()
@@ -66,7 +59,6 @@ class View():
                 m_count += 1
                 all_valid_count += 1
         try:
-            m_percentage = m_count / all_valid_count * 100
         except ZeroDivisionError:
             m_percentage = 0
         try:

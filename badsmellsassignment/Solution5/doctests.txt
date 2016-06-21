@@ -49,8 +49,7 @@ element format incorrect: element entered as None
 >>> Model.validate("Normal", '(Normal|Overweight|Obesity|Underweight)')
 'Normal'
 
->>> Model.validate("this is not a bmi",
-'(Normal|Overweight|Obesity|Underweight)')
+>>> Model.validate("this is not a bmi",'(Normal|Overweight|Obesity|Underweight)')
 element format incorrect: element entered as None
 
 >>> Model.validate('333', '[0-9]{2,3}')
@@ -78,7 +77,7 @@ pie_chart_bmi run
 pie_chart_bmi run
 
 >>> Controller.do_load_file("")
-IO error, not reading file. Try entering filename again
+Enter the destination/filename.         Eg: D:/data/load_data.txtIO error, not reading file. Try entering filename again
 
 >>> Controller.do_display_gender_data("","")
 No data loaded, please enter data location
